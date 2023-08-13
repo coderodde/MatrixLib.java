@@ -136,10 +136,12 @@ public class SparseMatrix<E> extends AbstractMatrix<SparseMatrix<E>, E> {
             if (dataXY.get(x).isEmpty()) {
                 dataXY.remove(x);
             }
-            
+        }
+        
+        if (dataYX.containsKey(y)) {
             dataYX.get(y).remove(x);
             
-            if (dataYX.get(y).isEmpty()) {
+            if (dataXY.get(y).isEmpty()) {
                 dataYX.remove(y);
             }
         }
