@@ -48,7 +48,7 @@ public class DenseMatrix2D<E> extends AbstractMatrix<DenseMatrix2D<E>, E> {
     @Override
     public void set(int x, int y, E value) {
         if (value == null || fieldElements.identity().equals(value)) {
-            data[y][x] = fieldElements.identity();
+            data[y][x] = fieldElements.identity(); 
         } else {
             data[y][x] = value;
         }

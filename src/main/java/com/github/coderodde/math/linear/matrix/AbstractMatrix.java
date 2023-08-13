@@ -119,7 +119,7 @@ public abstract class AbstractMatrix<M extends AbstractMatrix<M, E>, E> {
             return false;
         }
         
-        AbstractMatrix other = (AbstractMatrix) o;
+        AbstractMatrix<M, E> other = (AbstractMatrix<M, E>) o;
         
         if (width != other.width || height != other.height) {
             return false;
