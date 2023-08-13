@@ -1,0 +1,13 @@
+com\github\coderodde\math\linear\matrix\DenseMatrix2D.class
+com\github\coderodde\math\linear\matrix\AbstractMatrix.class
+com\github\coderodde\math\linear\matrix\MatricesNotMultipliableException.class
+com\github\coderodde\math\linear\matrix\support\BigIntegerFieldElement.class
+com\github\coderodde\math\linear\matrix\Addable.class
+com\github\coderodde\math\linear\matrix\MatricesNotAddableException.class
+com\github\coderodde\math\linear\matrix\Negable.class
+com\github\coderodde\math\linear\matrix\support\IntegerFieldElement.class
+com\github\coderodde\math\linear\matrix\MatrixBuilder.class
+com\github\coderodde\math\linear\matrix\SparseMatrix.class
+com\github\coderodde\math\linear\matrix\FieldElement.class
+com\github\coderodde\math\linear\matrix\Multipliable.class
+com\github\coderodde\math\linear\matrix\Zero.class
