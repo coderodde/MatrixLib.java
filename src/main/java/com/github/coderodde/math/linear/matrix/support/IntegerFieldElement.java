@@ -11,20 +11,36 @@ import com.github.coderodde.math.linear.matrix.FieldElement;
  */
 public class IntegerFieldElement implements FieldElement<Integer> {
     
-    private static final Integer ZERO = Integer.valueOf(0);
+    private static final Integer ZERO = 0;
 
     @Override
     public Integer negate(Integer value) {
-        return value == null ? ZERO : Integer.valueOf(-value);
+        return value == null ? ZERO : -value;
     }
 
     @Override
     public Integer add(Integer valueLeft, Integer valueRight) {
-        return valueLeft + valueRight;
+        if (valueLeft == null) {
+            valueLeft = ZERO;
+        }
+        
+        if (valueRight == null) {
+            valueRight = ZERO;
+        }
+        
+        return valueLeft + valueRight; 
     }
 
     @Override
     public Integer multiply(Integer valueLeft, Integer valueRight) {
+        if (valueLeft == null) {
+            valueLeft = ZERO;
+        }
+        
+        if (valueRight == null) {
+            valueRight = ZERO;
+        }
+        
         return valueLeft * valueRight;
     }
 

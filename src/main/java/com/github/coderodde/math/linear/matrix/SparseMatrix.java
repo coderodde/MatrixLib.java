@@ -141,7 +141,7 @@ public class SparseMatrix<E> extends AbstractMatrix<SparseMatrix<E>, E> {
         if (dataYX.containsKey(y)) {
             dataYX.get(y).remove(x);
             
-            if (dataXY.get(y).isEmpty()) {
+            if (dataYX.get(y).isEmpty()) {
                 dataYX.remove(y);
             }
         }
@@ -167,6 +167,10 @@ public class SparseMatrix<E> extends AbstractMatrix<SparseMatrix<E>, E> {
     
     private E combineRowCol(Map<Integer, E> colMap, Map<Integer, E> rowMap) {
         E sum = fieldElements.identity();
+        
+        if (colMap == null || rowMap == null) {
+            return sum;
+        }
         
         for (Map.Entry<Integer, E> entry : rowMap.entrySet()) {
             int a = entry.getKey();

@@ -115,10 +115,6 @@ public abstract class AbstractMatrix<M extends AbstractMatrix<M, E>, E> {
      */
     @Override
     public boolean equals(Object o) {
-        if (!Objects.requireNonNull(o).getClass().equals(this.getClass())) {
-            return false;
-        }
-        
         AbstractMatrix<M, E> other = (AbstractMatrix<M, E>) o;
         
         if (width != other.width || height != other.height) {
