@@ -165,19 +165,23 @@ public class SparseMatrix<E> extends AbstractMatrix<SparseMatrix<E>, E> {
         }
     }
     
-    private E combineRowCol(Map<Integer, E> colMap, Map<Integer, E> rowMap) {
+    private E combineRowCol(Map<Integer, E> map1, Map<Integer, E> map2) {
         E sum = fieldElements.identity();
         
-        if (colMap == null || rowMap == null) {
+        if (map1 == null || map2 == null) {
             return sum;
         }
         
-        for (Map.Entry<Integer, E> entry : rowMap.entrySet()) {
+        if (map1.size() < map2.size()) {
+            return combineRowCol(map2, map1);
+        }
+        
+        for (Map.Entry<Integer, E> entry : map2.entrySet()) {
             int a = entry.getKey();
             E rowValue = entry.getValue();
             
-            if (colMap.containsKey(a)) {
-                E columnValue = colMap.get(a);
+            if (map1.containsKey(a)) {
+                E columnValue = map1.get(a);
                 E product = fieldElements.multiply(columnValue, rowValue);
                 sum = fieldElements.add(sum, product);
             }
