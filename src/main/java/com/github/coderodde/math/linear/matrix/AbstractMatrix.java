@@ -60,6 +60,18 @@ public abstract class AbstractMatrix<M extends AbstractMatrix<M, E>, E> {
     public abstract M immutableNegate();
     
     /**
+     * Transposes this matrix in-place. This matrix must be a square matrix.
+     */
+    public abstract void transpose();
+    
+    /**
+     * Immutabily transpose this matrix. This matrix may have any dimensions.
+     * 
+     * @return the transpose of this matrix. 
+     */
+    public abstract M immutableTranspose();
+    
+    /**
      * Adds the input matrix to this matrix.
      * 
      * @param other the matrix to add to this matrix. 
@@ -223,6 +235,12 @@ public abstract class AbstractMatrix<M extends AbstractMatrix<M, E>, E> {
                             + ", the height of the right matrix is " 
                             + rightMatrix.getHeight() 
                             + ".");
+        }
+    }
+    
+    protected void checkIsSquareMatrix(M matrix) {
+        if (matrix.getWidth() != matrix.getHeight()) {
+            throw new IllegalArgumentException();
         }
     }
 }

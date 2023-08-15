@@ -46,6 +46,22 @@ public class SparseMatrix<E> extends AbstractMatrix<SparseMatrix<E>, E> {
         return ret;
     }
 
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public void transpose() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public SparseMatrix<E> immutableTranspose() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     @Override
     public void add(SparseMatrix<E> other) {
         for (Map.Entry<Integer, Map<Integer, E>> entry1

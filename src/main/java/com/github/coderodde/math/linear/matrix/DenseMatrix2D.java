@@ -10,6 +10,8 @@ package com.github.coderodde.math.linear.matrix;
  */
 public class DenseMatrix2D<E> extends AbstractMatrix<DenseMatrix2D<E>, E> {
     
+    private static final long MINIMUM_THREAD_WORK = 65536;
+    
     /**
      * The actual matrix holding the elements.
      */
@@ -64,6 +66,38 @@ public class DenseMatrix2D<E> extends AbstractMatrix<DenseMatrix2D<E>, E> {
                 set(x, y, fieldElements.negate(get(x, y)));
             }
         }
+    }
+    
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public void transpose() {
+        checkIsSquareMatrix(this);
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public DenseMatrix2D<E> immutableTranspose() {
+        DenseMatrix2D<E> transpose = new DenseMatrix2D<>(height, 
+                                                         width, 
+                                                         fieldElements);
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                transpose.set(y, x, get(x, y));
+            }
+        }
+        
+        return transpose;
     }
 
     /**
@@ -141,5 +175,13 @@ public class DenseMatrix2D<E> extends AbstractMatrix<DenseMatrix2D<E>, E> {
         }
         
         return sum;
+    }
+    
+    private static long getWorkEstimate(AbstractMatrix matrixLeft, 
+                                        AbstractMatrix matrixRight) {
+        long n = matrixLeft.getHeight();
+        long m = matrixLeft.getWidth();
+        long p = matrixRight.getWidth();
+        return n * m * p;
     }
 }
